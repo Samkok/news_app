@@ -223,7 +223,7 @@ class UtilWidget {
           borderRadius: BorderRadius.circular(30),
           color: themeData.hoverColor,
           border: Border.all(
-              color: themeData.colorScheme.onPrimary
+              color: themeData.hoverColor
           )
       ),
       child: Row(
@@ -277,7 +277,7 @@ class UtilWidget {
               borderRadius: BorderRadius.circular(20),
               color: themeData.hoverColor,
             border: Border.all(
-              color: themeData.colorScheme.onPrimary
+              color: themeData.hoverColor
             )
           ),
           child: Center(
@@ -334,7 +334,7 @@ class UtilWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: themeData.hoverColor,
-            border: Border.all(color: themeData.colorScheme.onPrimary)
+            border: Border.all(color: themeData.hoverColor)
           ),
           child: Center(
             child: TextField(

@@ -1,4 +1,4 @@
-package com.superiordev.demo.news_app
+package com.superiordev.demo.demo
 
 import io.flutter.embedding.android.FlutterActivity
 

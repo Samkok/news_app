@@ -27,18 +27,58 @@ import 'package:demo/domain/settings/pages/legal_policy_page.dart';
 import 'package:demo/domain/settings/pages/notification_setting_page.dart';
 import 'package:demo/domain/settings/pages/setting_page.dart';
 import 'package:demo/domain/tags/pages/tag_page.dart';
+import 'package:demo/firebase_options.dart';
 import 'package:demo/utils/route_name.dart';
 import 'package:demo/utils/themes.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'domain/channel/pages/channel_page.dart';
 import 'domain/article/pages/detail_article_page.dart';
+import 'domain/channel/pages/channel_page.dart';
 import 'domain/onboarding/pages/onboarding.dart';
 import 'domain/settings/controller/phone_number_controller.dart';
 import 'domain/settings/pages/account_page.dart';
 import 'domain/settings/pages/account_subpage/submit_email_page.dart';
 import 'domain/settings/pages/privacy_page.dart';
+
+// import 'package:news_app/utils/route_name.dart';
+// import 'package:news_app/utils/themes.dart';
+// import 'domain/article/controller/article_controller.dart';
+// import 'domain/article/controller/article_detail_controller.dart';
+// import 'domain/article/pages/create_update_article.dart';
+// import 'domain/auth/controller/auth_controller.dart';
+// import 'domain/auth/controller/signin_controller.dart';
+// import 'domain/auth/controller/signup_controller.dart';
+// import 'domain/auth/pages/reset_password/reset_password.dart';
+// import 'domain/auth/pages/signin/sign_in.dart';
+// import 'domain/auth/pages/signup/sign_up.dart';
+// import 'domain/boarding/controller/boarding_controller.dart';
+// import 'domain/boarding/pages/boarding_page.dart';
+// import 'domain/channel/pages/channel_detail_page.dart';
+// import 'domain/channel/pages/channel_page.dart';
+// import 'domain/article/pages/detail_article_page.dart';
+// import 'domain/home/controller/home_controller.dart';
+// import 'domain/notification/pages/notification_page.dart';
+// import 'domain/onboarding/pages/onboarding.dart';
+// import 'domain/profile/controller/profile_controller.dart';
+// import 'domain/saves/pages/saved_page.dart';
+// import 'domain/search/pages/search_page.dart';
+// import 'domain/settings/controller/language_controller.dart';
+// import 'domain/settings/controller/phone_number_controller.dart';
+// import 'domain/settings/controller/theme_controller.dart';
+// import 'domain/settings/pages/about_us_page.dart';
+// import 'domain/settings/pages/account_page.dart';
+// import 'domain/settings/pages/account_subpage/change_password_page.dart';
+// import 'domain/settings/pages/account_subpage/email_page.dart';
+// import 'domain/settings/pages/account_subpage/phone_number_page.dart';
+// import 'domain/settings/pages/account_subpage/submit_email_page.dart';
+// import 'domain/settings/pages/dark_light_mode_page.dart';
+// import 'domain/settings/pages/language_page.dart';
+// import 'domain/settings/pages/legal_policy_page.dart';
+// import 'domain/settings/pages/notification_setting_page.dart';
+// import 'domain/settings/pages/privacy_page.dart';
+// import 'domain/settings/pages/setting_page.dart';
+// import 'domain/tags/pages/tag_page.dart';
 
 Future<void> main() async {
 
@@ -58,6 +98,10 @@ Future<void> main() async {
 
   final ThemeController themeController = Get.put(ThemeController());
   await themeController.loadThemeMode(); // Load saved theme mode
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   runApp(const MyApp());
 }
@@ -254,15 +298,8 @@ class MyApp extends StatelessWidget {
           themeMode: themeController.isDarkMode.value
               ? ThemeMode.dark
               : ThemeMode.light,
-          home: const SafeArea(
-            child: Scaffold(
-              body: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Onboarding()
-                  ]
-              ),
-            ),
+          home: const Scaffold(
+            body: Onboarding(),
           ),
         );
       }
